@@ -1,7 +1,19 @@
 {
-  "name": "ui-lib",
+  "name": "jet_ui-lib",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -21,11 +33,22 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run clean && npm run build-ts && npm run build-css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "clean": "rimraf ./dist",
+    "lint": "eslint --ext js,ts,tsx src",
+    "test:nowatch": "cross-env CI=true react-scripts test",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +71,9 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
-    "@testing-library/dom": "^7.3.0"
+    "@testing-library/dom": "^7.3.0",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "rimraf": "^3.0.2"
   }
 }
