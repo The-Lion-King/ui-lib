@@ -1,6 +1,6 @@
 import { addDecorator, addParameters, configure} from '@storybook/react'
 import React from 'react'
-import '../src/styles/index.scss'
+import '../src/components/styles/index.scss'
 
 const wrapperStyle: React.CSSProperties = {
     padding: '20px 40px'

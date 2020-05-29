@@ -27,7 +27,6 @@ describe('button component test', () => {
 
         expect(element).toBeInTheDocument();
         expect(element.tagName).toEqual('BUTTON');
-        expect(element).toHaveClass('btn btn-default');
         expect(element.disabled).toBeFalsy();
         fireEvent.click(element);
         expect(defaultProps.onClick).toHaveBeenCalled();
@@ -37,7 +36,6 @@ describe('button component test', () => {
         const element = wrapper.getByText('haha') as HTMLButtonElement;
         expect(element.tagName).toEqual('BUTTON');
         expect(element).toBeInTheDocument();
-        expect(element).toHaveClass('btn btn-primary btn-lg klass');
         expect(element.disabled).toBeFalsy();
     });
     it('should render a link when btnType equals link and href is provided', () => {
@@ -46,7 +44,6 @@ describe('button component test', () => {
         expect(element.tagName).toEqual('A');
         expect(element).toBeInTheDocument();
         expect(element.href).toEqual("http://www.baidu.com/");
-        expect(element).toHaveClass('btn btn-link');
 
     });
     it('should render disabled button when disabled set to true', () => {

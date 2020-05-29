@@ -1,0 +1,21 @@
+@import "../styles/variables";
+@mixin col-span-and-offset() {
+  .#{$jet-prefix} {
+    &-col-span-0{
+      display: none;
+    }
+    @for $i from 1 through $max-col-length {
+      &-col-span-#{$i}{
+        flex: 0 0 #{$i/$max-col-length * 100%};
+        max-width:#{$i/$max-col-length * 100%};
+      }
+      &-col-offset-#{$i}{
+        margin-left:#{$i/$max-col-length * 100%};
+      }
+    }
+  }
+}
+
+
+
+@include col-span-and-offset()

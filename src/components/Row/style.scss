@@ -1,0 +1,32 @@
+@import "../styles/variables";
+.#{$jet-prefix} {
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &-row-top{
+    align-items: flex-start;
+  }
+  &-row-center {
+    align-items: center;
+  }
+  &-row-bottom {
+    align-items: flex-end;
+  }
+
+  $justify-content:
+          (
+                  "start":    flex-start,
+                  "end":  flex-end,
+                  "center":    center,
+                  "space-around":       space-around,
+                  "space-between":    space-between,
+          );
+
+  @each $key, $val in $justify-content {
+    &-row-#{$key} {
+      justify-content: $val
+    }
+  }
+
+}
